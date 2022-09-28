@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{%url 'create'%}" method="post">
+        {%csrf_token%}
+        <input type="text" name="task" id="">
+
+        <button type="submit">submit</button>
+    </form>
+    
+        <h1>Task</h1>
+        {%for task in tasks%}
+        <p >{{task.name}}</p>
+        <span>Task status:{{task.is_active}}</span>
+        <a type="button" href="{%url 'mark' task.id%}">Done</a>
+        <a type="button" href="{%url 'delete' task.id%}">delete</a>
+        <br>
+        {%endfor%}
+    
+</body>
+</html>
